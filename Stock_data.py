@@ -24,7 +24,7 @@ def fetch_and_store_data():
     if start_time <= current_time <= end_time:
         # Get the historical data from Yahoo Finance
         icici_bank = yf.Ticker("ICICIBANK.NS")
-        historical_data = icici_bank.history(start=start_time, end=current_time, interval='10m')
+        historical_data = icici_bank.history(start=start_time, end=current_time, interval='15m')
 
         # Convert historical data to JSON format
         historical_data_json = historical_data.to_dict(orient='index')
@@ -47,7 +47,7 @@ def fetch_and_store_data():
 
 # Create a scheduler and add the job
 scheduler = BlockingScheduler()
-scheduler.add_job(fetch_and_store_data, 'interval', minutes=10)
+scheduler.add_job(fetch_and_store_data, 'interval', minutes=15)
 
 # Start the scheduler
 scheduler.start()
